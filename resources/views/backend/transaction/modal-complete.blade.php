@@ -30,6 +30,14 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
+                                <label>Ganti Rugi</label>
+                                <input type="text" name="ganti_rugi" id="ganti_rugi" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
                                 <button type="submit" class="btn btn-primary shadow-sm">Simpan</button>
                                 <button class="btn btn-light shadow-sm" data-dismiss="modal">Batal</button>
                             </div>
@@ -40,3 +48,13 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $('#ganti_rugi').on('keyup', function(event) {
+            console.log(this.value)
+            let nominal = this.value
+                nominalFormat = nominal.replaceAll('.', '')
+
+            this.value = new Intl.NumberFormat('id-ID').format(nominalFormat)
+        })
+    </script>

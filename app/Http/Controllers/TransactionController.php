@@ -157,6 +157,7 @@ class TransactionController extends Controller
     public function complete(Request $request,$id){
         $transaction = $this->transaction->find($id);
         $transaction->update([
+            'compensation' => str_replace('.', '', $request->ganti_rugi),
             'return_date'=>$request->return_date,
             'status'=>'selesai',
             'penalty'=>Carbon::parse($transaction->back_date)->diffInDays($request->return_date) * $transaction->car->penalty,
@@ -165,6 +166,8 @@ class TransactionController extends Controller
         ]);
         $this->car->find($transaction->car_id)->update(['status'=>'tersedia']);
         return redirect()->route('transaction.index')->with('success-message','Data telah disimpan');
+        // dd($request);
+
     }
 
     private function generateInvoice($date){
