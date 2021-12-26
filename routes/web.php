@@ -66,6 +66,23 @@ Route::middleware(['auth','CekLevel:pemilik'])->group(function () {
     Route::post('/admin/manufacture/store','ManufactureController@store')->name('manufacture.store');
     Route::post('/admin/manufacture/{id}/update','ManufactureController@update')->name('manufacture.update');
     Route::get('/admin/manufacture/{id}/find','ManufactureController@find')->name('manufacture.find');
+
+    /**
+        * @author Muhammad Rafly Ramadhan
+        * @license Muhammad Rafly Ramadhan
+        * @link https://github.com/mrrfly
+        * @copyright 2021
+    */
+    Route::prefix('admin/pengeluaran')->group(function() {
+
+        Route::get('/', 'PengeluaranController@index')->name('pengeluaran');
+        Route::get('datatable', 'PengeluaranController@datatable')->name('pengeluaran.datatable');
+
+        Route::get('tambah', 'PengeluaranController@create')->name('pengeluaran.tambah');
+        Route::post('store', 'PengeluaranController@store')->name('pengeluaran.store');
+
+    });
+
 });
 
     Route::middleware(['auth','CekLevel:kasir,pemilik'])->group(function () {
@@ -106,3 +123,5 @@ Route::post('/admin/transaction/{id}/update','TransactionController@update')->na
 Route::post('/admin/transaction/export','TransactionController@export')->name('transaction.export');
 Route::post('/admin/transaction/export_pdf','TransactionController@export_pdf')->name('transaction.export.pdf');
 Route::post('/admin/transaction/{id}/complete','TransactionController@complete')->name('transaction.complete');
+
+

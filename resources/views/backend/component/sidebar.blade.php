@@ -110,6 +110,22 @@
     </li>
 @endif
 
+@if (auth()->user()->role->name == 'Pemilik' || auth()->user()->role->name == 'Bendahara')
+    <li class="nav-item">
+        <a class="nav-link {{is_active('pengeluaran.*') ? '':'collapsed'}}" href="#" data-toggle="collapse" data-target="#pengeluaran" aria-expanded="true" aria-controls="pengeluaran">
+            <i class="fas fa-hand-holding-usd"></i>
+            <span>
+                Pengeluaran
+            </span>
+        </a>
+        <div id="pengeluaran" class="collapse {{is_active('pengeluaran.*') || is_active('pengeluaran')  ? 'show':''}}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item {{active('pengeluaran')}}" href="{{route('pengeluaran')}}">Data Pengeluaran</a>
+            </div>
+        </div>
+    </li>
+@endif
+
 {{-- TRANSAKSI KASIR --}}
     @if (auth()->user()->username=="kasir")
     <li class="nav-item">
