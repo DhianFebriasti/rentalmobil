@@ -23,12 +23,12 @@
             <td>{{ title_case($row->customer->name) }}</td>
             <td>{{ title_case($row->customer->nik) }}</td>
             <td>{{ $row->status }}</td>
-            <td>{{ $row->amount }}</td>
+            <td>{{ $row->amount + $row->compensation }}</td>
         </tr>
     @endforeach
         <tr>
             <td colspan="6"></td>
-            <td>{{$transaction->sum('amount')}}</td>
+            <td>{{$transaction->sum('amount') + $transaction->sum('compensation')}}</td>
         </tr>
     </tbody>
 </table>

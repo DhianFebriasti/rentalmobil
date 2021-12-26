@@ -11,6 +11,7 @@ use App\Car;
 use App\Customer;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Exports\TransactionExport;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use Maatwebsite\Excel\Facades\Excel;
 use PhpOffice\PhpSpreadsheet\Writer\Pdf as WriterPdf;
 
@@ -183,6 +184,11 @@ class TransactionController extends Controller
         $transaction = new TransactionExport();
         $transaction->setDate($request->from,$request->to);
         return Excel::download($transaction, 'laporan_transaksi_'.$request->from.'_'.$request->to.'.xlsx');
+    }
+    public function export_pdf(Request $request){
+        $transaction = new TransactionExport();
+        $transaction->setDate($request->from,$request->to);
+        return Excel::download($transaction, 'laporan_transaksi_'.$request->from.'_'.$request->to.'.pdf');
     }
 
 }

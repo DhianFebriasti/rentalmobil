@@ -38,6 +38,7 @@
                 <th>Tanggal kembalikan</th>
                 <th>Harga Sewa</th>
                 <th>Denda</th>
+                <th>Ganti Rugi</th>
                 <th>Total</th>
             </tr>
         </thead>
@@ -50,17 +51,18 @@
                 <td>{{Carbon\Carbon::parse($data->return_date)->format('d-m-Y')}}</td>
                 <td>{{number_format($data->price,0,',','.')}}</td>
                 <td>{{number_format($data->penalty,0,',','.')}}</td>
+                <td>{{number_format($data->compensation,0,',','.')}}</td>
                 <td>{{number_format($data->amount,0,',','.')}}</td>
             </tr>
             <tr>
-                <td colspan="7">
+                <td colspan="8">
                     <strong>
                         Grand Total
                     </strong>
                 </td>
                 <td>
                     <strong>
-                        {{number_format($data->amount,0,',','.')}}
+                        {{number_format($data->amount + $data->compensation,0,',','.')}}
                     </strong>
                 </td>
             </tr>

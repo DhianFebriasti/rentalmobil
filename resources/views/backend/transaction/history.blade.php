@@ -27,6 +27,7 @@
     </div>
 </div>
 @include('backend.transaction.modal-export')
+@include('backend.transaction.modal-export-pdf')
 @include('backend.transaction.modal-complete')
 @endsection
 @push('scripts')
@@ -75,7 +76,10 @@ $(document).ready(function () {
                 '</div>'+
                 '<div class="col-lg-2">'+
                     '<span data-toggle="modal" data-target="#export">'+
-                    '<a href="#export" class="btn btn-sm btn-success float-right" data-toggle="tooltip" title="Export ke Excel"><i class="fas fa-file-excel"></i></a>'+
+                    '<a href="#export" class="btn btn-sm btn-success " data-toggle="tooltip" title="Export ke Excel"><i class="fas fa-file-excel"></i></a>'+
+                    '</span>'+
+                    '<span data-toggle="modal" data-target="#exportpdf">'+
+                    '<a href="#exportpdf" class="btn btn-sm btn-warning ml-2" data-toggle="tooltip" title="Export ke PDF"><i class="fas fa-file-pdf"></i></a>'+
                     '</span>'+
                 '</div>' +
                 '</div>');

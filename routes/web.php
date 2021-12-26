@@ -104,4 +104,5 @@ Route::get('/admin/transaction/{id}/destroy','TransactionController@destroy')->n
 Route::post('/admin/transaction/store','TransactionController@store')->name('transaction.store');
 Route::post('/admin/transaction/{id}/update','TransactionController@update')->name('transaction.update');
 Route::post('/admin/transaction/export','TransactionController@export')->name('transaction.export');
+Route::post('/admin/transaction/export_pdf','TransactionController@export_pdf')->name('transaction.export.pdf');
 Route::post('/admin/transaction/{id}/complete','TransactionController@complete')->name('transaction.complete');
